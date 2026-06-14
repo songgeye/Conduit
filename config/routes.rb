@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'articles#index'
   resources :articles
+  get  "/login",  to: "users#login"
+  get  "/signup", to: "users#signup"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
