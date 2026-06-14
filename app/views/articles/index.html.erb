@@ -20,43 +20,21 @@
           </ul>
         </div>
 
-        <div class="article-preview">
-          <div class="article-meta">
-            <div class="info">
-              <a href="/profile/eric-simons" class="author">Eric Simons</a>
-              <span class="date">January 20th</span>
+        <% @articles.each do |article| %>
+          <div class="article-preview">
+            <div class="article-meta">
+              <div class="info">
+                <span class="date"><%= article.created_at.strftime("%B %d, %Y") %></span>
+              </div>
             </div>
-
+            <%= link_to article_path(article), class: "preview-link" do %>
+              <h1><%= article.title %></h1>
+              <p><%= article.description %></p>
+              <span>Read more...</span>
+            <% end %>
           </div>
-          <a href="/article/how-to-build-webapps-that-scale" class="preview-link">
-            <h1>How to build webapps that scale</h1>
-            <p>This is the description for the post.</p>
-            <span>Read more...</span>
-            <ul class="tag-list">
-              <li class="tag-default tag-pill tag-outline">realworld</li>
-              <li class="tag-default tag-pill tag-outline">implementations</li>
-            </ul>
-          </a>
-        </div>
-
-        <div class="article-preview">
-          <div class="article-meta">
-            <div class="info">
-              <a href="/profile/albert-pai" class="author">Albert Pai</a>
-              <span class="date">January 20th</span>
-            </div>
-
-          </div>
-          <a href="/article/the-song-you" class="preview-link">
-            <h1>The song you won't ever stop singing. No matter how hard you try.</h1>
-            <p>This is the description for the post.</p>
-            <span>Read more...</span>
-            <ul class="tag-list">
-              <li class="tag-default tag-pill tag-outline">realworld</li>
-              <li class="tag-default tag-pill tag-outline">implementations</li>
-            </ul>
-          </a>
-        </div>
+        <% end %>
+        <%= link_to "Create", new_article_path, class: "btn btn-primary" %>
       </div>
 
       <div class="col-md-3">
